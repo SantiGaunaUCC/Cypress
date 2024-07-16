@@ -2,18 +2,30 @@ name: Cypress Tests
 
 on: 
   schedule:
-    - cron: '0 10 * * *'  
+    - cron: '0 13 * * *'  # Ejecutar a las 10 a.m. hora local de Argentina (1 p.m. UTC)
+  push:
+    branches:
+      - main  # También ejecuta las pruebas en cada push a la rama main
 
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v6
-        # with:
-        #   build: npm run build
-        #   start: npm start
+        with:
+          record: true
+          parallel: true
+   
