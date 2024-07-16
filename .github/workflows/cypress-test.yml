@@ -19,4 +19,5 @@ jobs:
       run: npm install
 
     - name: Run Cypress tests
-      run: npm run cypress:run  # Ajusta el script npm según cómo ejecutas Cypress en tu proyecto
+      run: |
+        npx cypress run --headless
