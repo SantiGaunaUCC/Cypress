@@ -6,18 +6,23 @@ describe('Prueba de Navegación', () => {
         cy.url().should('include', '/login');
     });
 
-    //  it('Navegar a UCC', () => {
-    //      cy.visit('https://siuccweb.ucc.edu.ar/');
-    //      cy.contains('a', 'Ucc').should('be.visible').click();
-    //      cy.url().should('eq', 'https://www.ucc.edu.ar');
-    //  });
+    // it('Navegar a UCC', () => {
+    //     cy.visit('https://siuccweb.ucc.edu.ar/');
+        
+    //     // Esperar a que el enlace 'Ucc' sea visible y hacer clic en él
+    //     cy.contains('a', 'Ucc').should('be.visible').click();
+        
+    //     // Verificar que la URL cambie a 'https://www.ucc.edu.ar'
+    //     cy.url().should('eq', 'https://www.ucc.edu.ar');
+    // });
+    
 
-/*     it('Navegar a Autogestión', () => {
+    it('Navegar a Autogestión', () => {
             cy.visit('https://siuccweb.ucc.edu.ar/');
             cy.contains('a', 'Autogestión').click();
             cy.url().should('eq', 'https://age.ucc.edu.ar/web/siuccweb_php/login.php');
         });
- */
+
     // it('Navegar a ICDA', () => {
     //     cy.visit('https://siuccweb.ucc.edu.ar/');
     //     cy.contains('a', 'ICDA').click();
