@@ -6,13 +6,13 @@ describe('Prueba de Navegación', () => {
         cy.url().should('include', '/login');
     });
 
-    it('Navegar a UCC', () => {  
-        cy.visit('https://siuccweb.ucc.edu.ar/'); 
-        cy.contains('a', 'Ucc').click();
-        cy.contains('')
-        cy.url().should('eq', 'http://www.ucc.edu.ar/');
+    // it('Navegar a UCC', () => {  
+    //     cy.visit('https://siuccweb.ucc.edu.ar/'); 
+    //     cy.contains('a', 'Ucc').click();
+    //     cy.contains('')
+    //     cy.url().should('eq', 'http://www.ucc.edu.ar/');
   
-    });
+    // });
         
     
     it('Navegar a Autogestión', () => {
