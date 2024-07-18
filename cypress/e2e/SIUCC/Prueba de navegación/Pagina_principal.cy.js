@@ -9,6 +9,7 @@ describe('Prueba de Navegación', () => {
     it('Navegar a UCC', () => {  
         cy.visit('https://siuccweb.ucc.edu.ar/'); 
         cy.contains('a', 'Ucc').click();
+        cy.contains('')
         cy.url().should('eq', 'http://www.ucc.edu.ar/');
   
     });
