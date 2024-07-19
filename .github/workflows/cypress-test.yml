@@ -1,12 +1,8 @@
 name: Cypress Tests
 
 on:
-  push:
-    branches:
-      - main
   schedule:
     - cron: '0 11-18 * * *'  # Ejecutar cada hora desde las 8 a.m. hasta las 3 p.m. hora local de Argentina (11 a.m. a 6 p.m. UTC)
-
 
 jobs:
   cypress-run:
@@ -28,8 +24,8 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           record: true
-          group: 'GitHub Actions'
-          browser: ${{ matrix.browser }}  # Especificar el navegador según la matriz
+          group: 'GitHub Actions - ${GITHUB_RUN_ID}'  # Utiliza GITHUB_RUN_ID para hacer el nombre del grupo único
+          browser: ${{ matrix.browser }}
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
