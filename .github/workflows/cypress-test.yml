@@ -1,6 +1,9 @@
 name: Cypress Tests
 
 on:
+  push:
+    branches:
+      - main  # Ejecutar en cada push a la rama main
   schedule:
     - cron: '0 11-18 * * *'  # Ejecutar cada hora desde las 8 a.m. hasta las 3 p.m. hora local de Argentina (11 a.m. a 6 p.m. UTC)
 
