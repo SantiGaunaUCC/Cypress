@@ -5,18 +5,18 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 11 * * *'  # Ejecutar a las 8 a.m. hora local de Argentina (11 a.m. UTC)
-    - cron: '0 12 * * *'  # Ejecutar a las 9 a.m. hora local de Argentina (12 p.m. UTC)
-    - cron: '0 13 * * *'  # Ejecutar a las 10 a.m. hora local de Argentina (1 p.m. UTC)
-    - cron: '0 14 * * *'  # Ejecutar a las 11 a.m. hora local de Argentina (2 p.m. UTC)
-    - cron: '0 15 * * *'  # Ejecutar a las 12 p.m. hora local de Argentina (3 p.m. UTC)
-    - cron: '0 16 * * *'  # Ejecutar a la 1 p.m. hora local de Argentina (4 p.m. UTC)
-    - cron: '0 17 * * *'  # Ejecutar a las 2 p.m. hora local de Argentina (5 p.m. UTC)
-    - cron: '0 18 * * *'  # Ejecutar a las 3 p.m. hora local de Argentina (6 p.m. UTC)
+    - cron: '0 11-18 * * *'  # Ejecutar cada hora desde las 8 a.m. hasta las 3 p.m. hora local de Argentina (11 a.m. a 6 p.m. UTC)
+
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]  # Ejecutar en Linux y Windows
+        browser: [chrome, firefox]           # Ejecutar en Chrome y Firefox
+
+    runs-on: ${{ matrix.os }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -29,6 +29,7 @@ jobs:
         with:
           record: true
           group: 'GitHub Actions'
+          browser: ${{ matrix.browser }}  # Especificar el navegador según la matriz
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
