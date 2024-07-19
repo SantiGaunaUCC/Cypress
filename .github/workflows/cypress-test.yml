@@ -11,7 +11,7 @@ jobs:
   cypress-run:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-11]  # Ejecutar en Linux y Windows
+        os: [ubuntu-latest, windows-latest]  # Ejecutar en Linux y Windows
         browser: [chrome, firefox]           # Ejecutar en Chrome y Firefox
 
     runs-on: ${{ matrix.os }}
