@@ -2,12 +2,11 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   projectId: '4xw7rg',
-  chromeWebSecurity: false, // Deshabilita la seguridad web para permitir contenido mixto
+  apiKey: '33b699b2-2219-462b-9435-5d04260885e2',
+  chromeWebSecurity: false,
   e2e: {
     setupNodeEvents(on, config) {
-      // Implementa los listeners de eventos de nodo aquí si es necesario
-
-      // Desactivar las redirecciones automáticas
+      // Configura eventos de nodo si es necesario
       config.server = {
         defaults: {
           enable: false
