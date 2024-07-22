@@ -4,8 +4,8 @@
   "description": "Ejemplo cypress",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:run": "cypress run --record --key 33b699b2-2219-462b-9435-5d04260885e2"
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
     
   },
   "author": "Santiago Gauna",
