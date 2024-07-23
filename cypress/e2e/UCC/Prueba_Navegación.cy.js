@@ -27,10 +27,31 @@ describe('Pruebas de Navegación', () => {
 
 
   it('Debería llevarnos al INGRESO', () => {
-    cy.contains('a','INGRESO 2025').click();
-    cy.url().should('include', '/ingreso');
-  })
-
+    // Verificar que el enlace 'INGRESO 2025' tenga el atributo 'href' correcto
+    cy.contains('a', 'INGRESO 2025')
+      .should('have.attr', 'href')
+      .and('include', 'ingreso');
+  
+    // Obtener el enlace y remover el atributo target para que abra en la misma pestaña
+    cy.contains('a', 'INGRESO 2025')
+      .invoke('removeAttr', 'target')
+      .click();
+  
+    // Verificar que la URL contenga la parte esperada
+    cy.url({ timeout: 15000 }).should('include', 'ingreso');
+  
+    // Esperar un poco para asegurar que el contenido de la nueva página se cargue
+    cy.wait(5000); // Espera 5 segundos, ajusta si es necesario
+  
+    // Verificar que el enlace 'Curso de Ingreso' esté presente y tenga los atributos específicos
+    cy.get('a.nav-link.nav-link-text.text-uppercase.d-flex.flex-row', { timeout: 10000 })
+      .should('have.attr', 'href', '/ingreso/curso')
+      .should('be.visible')
+      .and('contain.text', 'Curso de Ingreso');
+  
+  });
+  
+  
   it('Debería llevarnos al CAMPUS UCC RIO CUARTO', () => {
     cy.contains('a','CAMPUS UCC RÍO CUARTO').click();
     cy.url().should('include', '/campus-ucc-rio-cuarto');
