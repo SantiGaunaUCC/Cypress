@@ -1,5 +1,3 @@
-const { timeout } = require("puppeteer");
-
 describe('Pruebas de Navegación', () => {
   beforeEach(() => {
       // Antes de cada prueba, visitamos la página de inicio
@@ -114,30 +112,9 @@ describe('Pruebas de Navegación', () => {
       .and('contain.text', 'Modalidad');
     });
 
-  // it('Selector Universidad Jesuita', () => {
-
-  //   cy.contains('a', 'Universidad Jesuita').click();
-  //   cy.contains('a', 'La Católica en números')
-  //     .should('have.attr', 'href')
-  //     .and('include', '/catolica-numeros');
-  //   cy.contains('a', 'La Católica en números')
-  //     .invoke('removeAttr', 'target')
-  //     .click();
-  //   cy.url({ timeout: 2000 }).should('include', 'catolica-numeros');
-
-  //   cy.get('a[href="/"]').click();
-
-  //   cy.contains('a', 'Universidad Jesuita').click();
-  //   cy.contains('a', 'Reseña histórica')
-  //     .should('have.attr', 'href')
-  //     .and('include', '/resena-historica');
-  //   cy.contains('a', 'Reseña histórica')
-  //     .invoke('removeAttr', 'target')
-  //     .click();
-  //   cy.url({ timeout: 2000}).should('include', 'resena-historica');
+ 
 
 
-  // });
       
 
 
