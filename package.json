@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-    
-    
   },
   "author": "Santiago Gauna",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^13.13.0"
+    "cypress": "^13.13.0",
+    "node": "^22.5.1"
+  },
+  "devDependencies": {
+    "@cypress/webpack-preprocessor": "^6.0.2",
+    "typescript": "^5.5.4"
   }
 }

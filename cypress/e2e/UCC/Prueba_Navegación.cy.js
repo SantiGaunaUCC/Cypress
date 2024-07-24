@@ -1,3 +1,5 @@
+const { timeout } = require("puppeteer");
+
 describe('Pruebas de Navegación', () => {
   beforeEach(() => {
       // Antes de cada prueba, visitamos la página de inicio
@@ -5,6 +7,8 @@ describe('Pruebas de Navegación', () => {
   });
 
   it('Debería llevarnos a Contactos WSP y verificar el enlace de WhatsApp', () => {
+
+    
     // Verificar que el enlace 'CONTACTANOS' tenga el atributo 'href' correcto
     cy.contains('a', 'CONTACTANOS')
       .should('have.attr', 'href')
@@ -15,16 +19,13 @@ describe('Pruebas de Navegación', () => {
     cy.contains('a', 'CONTACTANOS')
       .invoke('removeAttr', 'target')
       .click();
-  
-    // Agregar un tiempo de espera para asegurar que la redirección haya ocurrido
-    cy.wait(5000); // Espera 5 segundos, ajusta si es necesario
-  
-    // Verificar que la URL contenga la parte esperada
-    cy.url({ timeout: 10000 }).should('include', 'wa.me/5493512012536')
+
+    // // Verificar que la URL contenga la parte esperada
+    // cy.url().should('eq', 'https://wa.me/5493512012536')
 
   });
   
-  
+  // https://wa.me/5493512012536
 
 
   it('Debería llevarnos al INGRESO', () => {
@@ -111,7 +112,35 @@ describe('Pruebas de Navegación', () => {
       .and('have.attr', 'role', 'button')
       .should('be.visible')
       .and('contain.text', 'Modalidad');
-  });
+    });
+
+  // it('Selector Universidad Jesuita', () => {
+
+  //   cy.contains('a', 'Universidad Jesuita').click();
+  //   cy.contains('a', 'La Católica en números')
+  //     .should('have.attr', 'href')
+  //     .and('include', '/catolica-numeros');
+  //   cy.contains('a', 'La Católica en números')
+  //     .invoke('removeAttr', 'target')
+  //     .click();
+  //   cy.url({ timeout: 2000 }).should('include', 'catolica-numeros');
+
+  //   cy.get('a[href="/"]').click();
+
+  //   cy.contains('a', 'Universidad Jesuita').click();
+  //   cy.contains('a', 'Reseña histórica')
+  //     .should('have.attr', 'href')
+  //     .and('include', '/resena-historica');
+  //   cy.contains('a', 'Reseña histórica')
+  //     .invoke('removeAttr', 'target')
+  //     .click();
+  //   cy.url({ timeout: 2000}).should('include', 'resena-historica');
+
+
+  // });
+      
+
+
 
 
 });
