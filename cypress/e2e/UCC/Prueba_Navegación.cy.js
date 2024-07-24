@@ -8,22 +8,23 @@ describe('Pruebas de Navegación', () => {
     // Verificar que el enlace 'CONTACTANOS' tenga el atributo 'href' correcto
     cy.contains('a', 'CONTACTANOS')
       .should('have.attr', 'href')
-      .and('include', 'wa.me/5493512012536');
-
+      .and('include', 'wa.me/5493512012536')
+     
+  
     // Obtener el enlace y remover el atributo target para que abra en la misma pestaña
     cy.contains('a', 'CONTACTANOS')
       .invoke('removeAttr', 'target')
       .click();
+  
+    // Agregar un tiempo de espera para asegurar que la redirección haya ocurrido
+    cy.wait(5000); // Espera 5 segundos, ajusta si es necesario
+  
+    // Verificar que la URL contenga la parte esperada
+    cy.url({ timeout: 10000 }).should('include', 'wa.me/5493512012536')
 
-    // Verificar que la URL contenga la parte esperada (ajusta el timeout si es necesario)
-    cy.url({ timeout: 10000 }).should('include', 'wa.me/5493512012536');
-
-    // Verificar que el enlace de WhatsApp esté presente y visible en la nueva página
-    // cy.get('a#action-button', { timeout: 10000 })
-    //   .should('have.attr', 'href', 'https://web.whatsapp.com/send/?phone=5493512012536&text&type=phone_number&app_absent=0')
-    //   .and('have.attr', 'title', 'Compartir en Whatsapp')
-    //   .should('be.visible');
   });
+  
+  
 
 
   it('Debería llevarnos al INGRESO', () => {
@@ -48,7 +49,6 @@ describe('Pruebas de Navegación', () => {
       .should('have.attr', 'href', '/ingreso/curso')
       .should('be.visible')
       .and('contain.text', 'Curso de Ingreso');
-  
   });
   
   
